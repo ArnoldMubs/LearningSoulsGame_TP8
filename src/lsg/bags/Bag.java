@@ -4,6 +4,7 @@ import lsg.armor.BlackWitchVeil;
 import lsg.armor.DragonSlayerLeggings;
 import lsg.armor.RingedKnightArmor;
 import lsg.consumables.food.Hamburger;
+import lsg.exceptions.lsg.exceptions.BagFullException;
 import lsg.weapons.ShotGun;
 import lsg.weapons.Sword;
 
@@ -29,7 +30,8 @@ public class Bag {
         return weight;
     }
 
-    public void push(Collectible item){
+    public void push(Collectible item) throws BagFullException {
+        if (item.getWeight()+this.weight >= this.capacity) throw new BagFullException(this);
         if (item.getWeight() <= this.capacity && (item.getWeight()+this.weight <=this.capacity)){
             this.items.add(item);
             this.weight += item.getWeight();
@@ -61,6 +63,7 @@ public class Bag {
     }
 
     public String toString() {
+        if (this == null) return null;
         String bag = this.getClass().getSimpleName()+" [ "+this.items.size()+" items | "+this.weight+"/"+this.capacity+" kg ]\n";
         if(this.items.size()==0){
             return bag+BULLET_POINT+" (empty)";
@@ -71,7 +74,10 @@ public class Bag {
         return bag;
     }
 
-    public static void transfer(Bag from, Bag into){
+    public static void transfer(Bag from, Bag into) throws BagFullException {
+        if (from==null || into ==null){
+            return;
+        }
         Collectible[] tabItem = from.getItems();
         for( Collectible it : tabItem){
             into.push(it);
@@ -87,14 +93,22 @@ public class Bag {
         RingedKnightArmor ring  = new RingedKnightArmor();
         Bag bag = new Bag(10);
         Bag bag2 = new Bag(5);
-        bag.push(shot);
-        bag.push(dragon);
-        bag.push(ring);
+        try {
+            bag.push(shot);
+            bag.push(dragon);
+            bag.push(ring);
+        } catch (BagFullException e) {
+            e.printStackTrace();
+        }
         System.out.println("Sac 1 :");
         System.out.println(bag.toString());
         System.out.println("Sac 2 :");
         System.out.println(bag2.toString());
-        transfer(bag,bag2);
+        try {
+            transfer(bag,bag2);
+        } catch (BagFullException e) {
+            e.printStackTrace();
+        }
         System.out.println();
         System.out.println("Sac 2 après transfert :");
         System.out.println(bag2.toString());

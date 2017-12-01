@@ -4,6 +4,7 @@ import lsg.armor.BlackWitchVeil;
 import lsg.armor.DragonSlayerLeggings;
 import lsg.consumables.MenuBestOfV1;
 import lsg.consumables.food.Hamburger;
+import lsg.exceptions.lsg.exceptions.BagFullException;
 import lsg.weapons.Sword;
 
 public class SmallBag extends Bag {
@@ -17,10 +18,14 @@ public class SmallBag extends Bag {
         Sword sword = new Sword();
         DragonSlayerLeggings dragon = new DragonSlayerLeggings();
         SmallBag smalBag = new SmallBag();
-        smalBag.push(black);
-        smalBag.push(hamb);
-        smalBag.push(sword);
-        smalBag.push(dragon);
+        try {
+            smalBag.push(black);
+            smalBag.push(hamb);
+            smalBag.push(sword);
+            smalBag.push(dragon);
+        } catch (BagFullException e) {
+            e.printStackTrace();
+        }
         System.out.println(smalBag.toString());
         Collectible sup = smalBag.pop(dragon);
         System.out.println("Pop sur "+sup);

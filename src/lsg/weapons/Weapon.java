@@ -2,6 +2,7 @@ package lsg.weapons;
 
 import lsg.bags.Collectible;
 import lsg.consumables.repair.RepairKit;
+import lsg.exceptions.ConsumeNullException;
 
 public class Weapon implements Collectible {
     public static String DURABILITY_STAT_STRING = "durability";
@@ -66,9 +67,13 @@ public class Weapon implements Collectible {
     public boolean isBroken() {
         return this.durability <= 0;
     }
-    public void repairWith(RepairKit kit){
-        int k = kit.use();
-        this.durability += k;
+    public void repairWith(RepairKit kit) throws ConsumeNullException {
+        if(kit == null){
+            throw new ConsumeNullException();
+        }else {
+            int k = kit.use();
+            this.durability += k;
+        }
     }
 
     @Override

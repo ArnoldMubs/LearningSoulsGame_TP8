@@ -5,6 +5,7 @@ import lsg.armor.BlackWitchVeil;
 import lsg.armor.RingedKnightArmor;
 import lsg.buffs.rings.Ring;
 import lsg.buffs.rings.RingOfDeath;
+import lsg.exceptions.NoBagException;
 
 /**
  * La Classe lsg.characters.Hero est destinée à fournir les mécanismes a un hero
@@ -136,7 +137,8 @@ public class Hero extends Character {
         return ArmorItems;
     }
 
-    public void equip(ArmorItem item, int slot){
+    public void equip(ArmorItem item, int slot) throws NoBagException{
+        if (this.bagIsNull()) throw new NoBagException();
         if (this.bagContains(item)){
             this.setArmorItem(item,slot);
             this.pullOut(item);
@@ -144,12 +146,27 @@ public class Hero extends Character {
         }
     }
 
-    public void equip(Ring ring, int slot){
+    public void equip(Ring ring, int slot) throws NoBagException{
+        if (this.bagIsNull()) throw new NoBagException();
         if (this.bagContains(ring)){
             this.setRing(ring,slot);
             this.pullOut(ring);
             System.out.println(" and equips it !");
         }
+    }
+
+    public void printRings() {
+        String ring = "RINGS ";
+        int res;
+        for(int i = 0; i< this.rings.length;i++){
+            res = i+1;
+            if (this.rings[i] != null) {
+                ring = ring + String.format(" %2d:%-30s",res,this.rings[i]);
+            }else {
+                ring = ring + String.format(" %2d:%-30s",res,"empty");
+            }
+        }
+        System.out.println(ring);
     }
 
 
