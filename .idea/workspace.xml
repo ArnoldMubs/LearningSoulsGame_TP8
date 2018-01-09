@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91fa4085-dc7f-4436-bd90-1e1b7b1189b5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lsg/characters/Zombie.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lsg/graphics/panes/HUDPane.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lsg/graphics/panes/MessagePane.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lsg/graphics/widgets/characters/statbars/StatBar.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lsg/LearningSoulsGameApplication.java" afterPath="$PROJECT_DIR$/src/lsg/LearningSoulsGameApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lsg/characters/Character.java" afterPath="$PROJECT_DIR$/src/lsg/characters/Character.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lsg/graphics/panes/CreationPane.java" afterPath="$PROJECT_DIR$/src/lsg/graphics/panes/CreationPane.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -895,7 +887,7 @@
       <workItem from="1515400236230" duration="10000" />
       <workItem from="1515400627684" duration="8746000" />
       <workItem from="1515445667965" duration="3261000" />
-      <workItem from="1515500170350" duration="8478000" />
+      <workItem from="1515500170350" duration="8521000" />
     </task>
     <task id="LOCAL-00001" summary="Rendu TP5">
       <created>1510323519777</created>
@@ -918,7 +910,14 @@
       <option name="project" value="LOCAL" />
       <updated>1515399727141</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Rendu TP 8">
+      <created>1515509764057</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1515509764058</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -954,7 +953,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="188764000" />
+    <option name="totallyTimeSpent" value="188807000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="829" extended-state="0" />
@@ -1033,7 +1032,8 @@
     <MESSAGE value="Rendu TP5" />
     <MESSAGE value="Rendu TP 5" />
     <MESSAGE value="Rendu TP 7" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rendu TP 7" />
+    <MESSAGE value="Rendu TP 8" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rendu TP 8" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
