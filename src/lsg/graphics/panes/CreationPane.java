@@ -38,7 +38,7 @@ public class CreationPane extends VBox{
         ft.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                finishedHandler.handle(event);
+                //finishedHandler.handle(event);
             }
         });
 

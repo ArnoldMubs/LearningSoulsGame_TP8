@@ -2,6 +2,7 @@ package lsg.characters;
 import java.lang.String;
 import java.util.Locale;
 
+import javafx.beans.property.SimpleDoubleProperty;
 import lsg.bags.Bag;
 import lsg.bags.Collectible;
 import lsg.bags.SmallBag;
@@ -24,6 +25,17 @@ public abstract class Character {
     public static final String PROTECTION_STAT_STRING = "Armor";
     private Bag bag;
     private String name;
+    private SimpleDoubleProperty lifeRate;
+
+    public double getStaminaRate() {
+        return staminaRate.get();
+    }
+
+    public SimpleDoubleProperty staminaRateProperty() {
+        return staminaRate;
+    }
+
+    private SimpleDoubleProperty staminaRate;
     private int life;
     private int maxLife;
     private int stamina;
@@ -36,6 +48,8 @@ public abstract class Character {
         this.name = name;
         this.dice = new Dice(101);
         this.bag = new SmallBag();
+        this.lifeRate = new SimpleDoubleProperty();
+        this.staminaRate = new SimpleDoubleProperty();
     }
 
     public String getName() {
@@ -52,6 +66,7 @@ public abstract class Character {
 
     protected void setLife(int life) {
         this.life = life;
+        this.lifeRate.set((double)life/maxLife);
     }
 
     public int getMaxLife() {
@@ -60,6 +75,7 @@ public abstract class Character {
 
     protected void setMaxLife(int maxLife) {
         this.maxLife = maxLife;
+        this.lifeRate.set((double)life/maxLife);
     }
 
     public int getStamina() {
@@ -68,6 +84,7 @@ public abstract class Character {
 
     protected void setStamina(int stamina) {
         this.stamina = stamina;
+        this.staminaRate.set((double)stamina/maxStamina);
     }
 
     public int getMaxStamina() {
@@ -76,6 +93,7 @@ public abstract class Character {
 
     protected void setMaxStamina(int maxStamina) {
         this.maxStamina = maxStamina;
+        this.staminaRate.set((double)stamina/maxStamina);
     }
 
     public void printStats () {
@@ -352,5 +370,13 @@ public abstract class Character {
             return String.format("%-20s %-20s "+LIFE_STAT_STRING.toUpperCase()+":%-10s "+STAM_STAT_STRING.toUpperCase()+":%-10s PROTECTION:%-10s BUFF:%-10s(ALIVE)","[ "+getClass().getSimpleName()+" ]",this.getName(),String.format("%5d",this.getLife()),String.format("%5d",this.getStamina()),String.format(Locale.US,"%6.2f",this.computeProtection()),String.format(Locale.US,"%6.2f",this.computeBuff()));
         }
         return String.format("%-20s %-20s "+LIFE_STAT_STRING.toUpperCase()+":%-10s "+STAM_STAT_STRING+":%-10s PROTECTION:%-10s BUFF:%-10s","[ "+getClass().getSimpleName()+" ]",this.getName(),String.format("%5d",this.getLife()),String.format("%5d",this.getStamina()),String.format(Locale.US,"%6.2f",this.computeProtection()),String.format(Locale.US,"%6.2f",this.computeBuff()));
+    }
+
+    public double getLifeRate() {
+        return lifeRate.get();
+    }
+
+    public SimpleDoubleProperty lifeRateProperty() {
+        return lifeRate;
     }
 }
